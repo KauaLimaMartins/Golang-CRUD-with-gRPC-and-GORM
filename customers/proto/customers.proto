@@ -1,0 +1,56 @@
+syntax = "proto3";
+option go_package = "proto";
+
+service CustomerService {
+  rpc GetAllCustomers(GetAllCustomersReq) returns (GetAllCustomersRes) {}
+  rpc GetCustomerById(GetCustomerByIdReq) returns (GetCustomerByIdRes) {}
+  rpc CreateCustomer(CreateCustomerReq) returns (CreateCustomerRes) {}
+  rpc UpdateCustomer(UpdateCustomerReq) returns (UpdateCustomerRes) {}
+  rpc DeleteCustomer(DeleteCustomerReq) returns (DeleteCustomerRes) {}
+}
+
+message Customer {
+  string Id = 1;
+  string FirstName = 2;
+  string LastName = 3;
+  string Email = 4;
+  string Password = 5;
+  string CreatedAt = 6;
+  string UpdatedAt = 7;
+  string DeletedAt = 8;
+}
+
+message GetAllCustomersReq {}
+message GetAllCustomersRes {
+  repeated Customer Customers = 1;
+}
+
+message GetCustomerByIdReq {
+  string CustomerId = 1;
+}
+message GetCustomerByIdRes {
+  Customer Customer = 1;
+}
+
+message CreateCustomerReq {
+  Customer Customer = 1; // Customer id blank
+}
+message CreateCustomerRes {
+  uint64 status = 1;
+  Customer Customer = 2; // Filled in id 
+}
+
+message UpdateCustomerReq {
+  Customer Customer = 1;
+}
+message UpdateCustomerRes {
+  uint64 Status = 1;
+  Customer Customer = 2;
+}
+
+message DeleteCustomerReq {
+  repeated string CustomersIds = 1;
+}
+message DeleteCustomerRes {
+  uint64 status = 1;
+}
