@@ -4,7 +4,7 @@ A simple golang CRUD using gRPC server and gorm
 
 ## How to run it
 
-First, you need to have [Docker](https://www.docker.com/) installed
+First, you need to have [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) installed
 
 - Clone the project:
 ```bash
